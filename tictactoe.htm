@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +8,15 @@
     <link rel="stylesheet" href="tictac.css">
 </head>
 <body>
+    <div class="start">
+        <div>Select number of players:</div>
+        <div>
+            <input type="radio" name="plselect" id="onep" value="1">One<br>
+            <input type="radio" name="plselect" id="twop" value="2">Two<br>
+        </div>
+        <div><button onclick="startGame()">Start Game</button></div>
+        <div class="error"></div>
+    </div>
     <table>
         <tr>
             <td class="cell" id="0"></td>
@@ -29,42 +37,8 @@
     <div class="endgame">
         <div class="text"></div>
         <button onclick="startGame()">Replay</button>
+        <button onclick="menu()">Back to Menu</button>
     </div>
     <script src="tic.js"></script>
 </body>
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>TicTacGame</title>
-    <link rel="stylesheet" href="tictac.css">
-</head>
-<body>
-    <table>
-        <tr>
-            <td class="cell" id="0"></td>
-            <td class="cell" id="1"></td>
-            <td class="cell" id="2"></td>
-        </tr>
-        <tr>
-            <td class="cell" id="3"></td>
-            <td class="cell" id="4"></td>
-            <td class="cell" id="5"></td>
-        </tr>
-        <tr>
-            <td class="cell" id="6"></td>
-            <td class="cell" id="7"></td>
-            <td class="cell" id="8"></td>
-        </tr>
-    </table>
-    <div class="endgame">
-        <div class="text"></div>
-        <button onclick="startGame()">Replay</button>
-    </div>
-    <script src="tic.js"></script>
-</body>
->>>>>>> 442f99050e13d0bcb768b225473491470d984a3b
 </html>
