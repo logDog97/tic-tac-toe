@@ -5,17 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TicTacGame</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="tictac.css">
+    <style>
+    .btn-space{
+        margin-top: 10px;
+    }
+    .navbar .navbar-brand{
+        font-size: 40px;
+        font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    </style>
 </head>
 <body>
-    <div class="start">
-        <div>Select number of players:</div>
-        <div>
-            <input type="radio" name="plselect" id="onep" value="1">One<br>
-            <input type="radio" name="plselect" id="twop" value="2">Two<br>
-        </div>
-        <div><button onclick="startGame()">Start Game</button></div>
-        <div class="error"></div>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand brand-name" href="#">
+            <img src="logo_f.png" width="15%" height="10%" class="d-inline-block align-top" alt="">
+            TicTacToe
+        </a>
+    </nav>
+    <div class="jumbotron">
+        <h1 class="display-4">Select number of players:</h1>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary active">
+              <input type="radio" name = "plselect" id="onep" autocomplete="off" value="1" checked> One
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="plselect" id="twop" value="2" autocomplete="off"> Two
+            </label>
+          </div>
+        <div><button onclick="startGame()" class="btn btn-primary btn-lg btn-space">Start Game</button></div>
+        <!--div class="error"></div-->
     </div>
     <table>
         <tr>
@@ -34,11 +54,30 @@
             <td class="cell" id="8"></td>
         </tr>
     </table>
+    <!--
     <div class="endgame">
         <div class="text"></div>
         <button onclick="startGame()">Replay</button>
         <button onclick="menu()">Back to Menu</button>
     </div>
+    -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="endmodal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Game Over</h5>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" onclick="startGame()" class="btn btn-primary">Rematch</button>
+                    <button type="button" onclick="menu()" class="btn btn-secondary">Back to Menu</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="tic.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

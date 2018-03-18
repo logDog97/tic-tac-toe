@@ -18,36 +18,33 @@ const cells = document.querySelectorAll('.cell');
 //startGame();
 
 function menu(){
+    $('#endmodal').modal('hide');
     document.querySelector("table").style.display = "none";
-    document.querySelector(".endgame").style.display = "none";
-    document.querySelector(".start").style.display = "block";
+    //document.querySelector(".endgame").style.display = "none";
+    document.querySelector(".jumbotron").style.display = "block";
 }
 
 function startGame(){
+    $('#endmodal').modal('hide');
     var types = document.getElementsByName('plselect');
     for(var i = 0; i < types.length; i++){
         if(types[i].checked){
             gameType = types[i].value;
         }
     }
-    if(gameType != undefined){
-        if(gameType == 2){
-            currPlayer = huPlayer;
-        }
-        document.querySelector("table").style.display = "block";
-        
-        document.querySelector(".start").style.display = "none";
-        document.querySelector(".endgame").style.display = "none";
-        origBoard = Array.from(Array(9).keys())
-        for(var i = 0; i < cells.length; i++){
-            cells[i].innerText = '';
-            cells[i].style.removeProperty('background-color');
-            cells[i].addEventListener('click',turnClick, false);
-        }         
+    //console.log(gameType);
+    if(gameType == 2){
+        currPlayer = huPlayer;
     }
-    else{
-        document.querySelector(".start .error").innerText = "Please choose a game type.";
-    }
+    document.querySelector("table").style.display = "block";
+    document.querySelector(".jumbotron").style.display = "none";
+    //document.querySelector(".endgame").style.display = "none";
+    origBoard = Array.from(Array(9).keys())
+    for(var i = 0; i < cells.length; i++){
+        cells[i].innerText = '';
+        cells[i].style.removeProperty('background-color');
+        cells[i].addEventListener('click',turnClick, false);
+    }         
 }
 
 function turnClick(square){
@@ -58,8 +55,10 @@ function turnClick(square){
         }
         else{
             turn(square.target.id, currPlayer);
-            if(currPlayer == huPlayer) currPlayer = aiPlayer;
-            else currPlayer = huPlayer;
+            if(!checkTie()){
+                if(currPlayer == huPlayer) currPlayer = aiPlayer;
+                else currPlayer = huPlayer;
+            }
         }
     }
 }
@@ -122,8 +121,10 @@ function checkTie(){
 }
 
 function declareWinner(who){
-    document.querySelector(".endgame").style.display = "block";
-    document.querySelector(".endgame .text").innerText = who;
+    // document.querySelector(".endgame").style.display = "block";
+    // document.querySelector(".endgame .text").innerText = who;
+    document.querySelector(".modal-body").innerText = who;
+    $('#endmodal').modal('show');
 }
 
 function minimax(newBoard, player){
